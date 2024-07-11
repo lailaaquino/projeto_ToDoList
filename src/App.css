@@ -34,5 +34,30 @@
   }
   to {
     transform: rotate(360deg);
-  }
+  }  
 }
+
+body {
+  background-color: pink;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap');
+
+.App h1 {
+  font-family: 'Nunito', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px 0; 
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-left: 10px; 
+}
+
+
