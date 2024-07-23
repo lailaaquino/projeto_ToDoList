@@ -1,13 +1,10 @@
-// src/App.js
-
 import React, { useState, useEffect } from 'react';
-import TaskForm from './components/taskForm';  // Importa o componente TaskForm
-import './App.css';
+import TaskForm from './components/TaskForm';
+import './App.scss'; 
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
-  // Carregar tarefas salvas no localStorage ao iniciar o componente
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
@@ -15,13 +12,13 @@ const App = () => {
     }
   }, []);
 
-  const handleAddTask = (newTask) => { //add tarefa
+  const handleAddTask = (newTask) => {
     const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
-  const handleRemoveTask = (indexToRemove) => { //remove tarefa
+  const handleRemoveTask = (indexToRemove) => {
     const updatedTasks = tasks.filter((task, index) => index !== indexToRemove);
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
@@ -29,17 +26,30 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Lista de Tarefas</h1>
-      <TaskForm onAddTask={handleAddTask} />  {/* exibe TaskForm */}
-      <ul>
-        {/*percorre as tarefas e transforma em item da lista */}
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task}
-            <button onClick={() => handleRemoveTask(index)}>Remover</button>
-          </li>
-        ))}
-      </ul>
+      <header className="App__header">
+        <nav className="App__nav">
+          <h1 className="App__title">TodoList</h1>
+        </nav>
+      </header>
+      <main className="App__main">
+        <TaskForm onAddTask={handleAddTask} />
+        <section className="App__tasks">
+          <h2 className="App__tasks-title">Lista de Tarefas</h2>
+          <ul className="App__task-list">
+            {tasks.map((task, index) => (
+              <li key={index} className="App__task-item">
+                <span className="App__task-text">{task}</span>
+                <button 
+                  className="App__task-remove" 
+                  onClick={() => handleRemoveTask(index)}
+                >
+                  Remover
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
     </div>
   );
 };

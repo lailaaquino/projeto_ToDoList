@@ -1,0 +1,138 @@
+.App {
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  background-color: #d87ead; 
+  padding: 20px;
+  min-height: 100vh; // altura suficiente p cobrir a tela
+
+  &__header { // filho de .App 
+    background-color: #d87ead;
+    color: #fff;
+    padding: 10px 20px; // Ajusta o padding interno
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // sombra para destacar o cabeçalho
+
+    &__nav { // filho de .App__header
+      display: flex;
+      justify-content: center;
+    }
+
+    &__title { // filho de .App__header
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+
+  &__main { // filho de .App
+    margin-top: 80px; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%; // 90% do espaço disponível
+    max-width: 1200px; // largura máxima para a caixa
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Estilo da lista de tarefas
+  &__task-list { // filho de .App
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  // Estilo de cada item da lista
+  &__task-item { // filho de .App
+    background: #fff;
+    border: 2px solid #d87ead; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--completed { // filho de .App__task-item
+      background-color: #e0ffe0; // Fundo verde claro para tarefa completada
+      border-color: #a4d4a4; // Borda verde claro
+    }
+  }
+
+  // texto da tarefa
+  &__task-text { // filho de .App
+    flex-grow: 1; // ocupa o espaço disponível
+    text-align: left;
+  }
+
+  // Estilo do botão de remoção
+  &__task-remove { // filho de .App
+    background-color: #d87ead; 
+    color: #fff; //texto 
+    border: none; // Remove a borda
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover { 
+      background-color: #9f2b79;
+    }
+  }
+
+  // Container para botões "Remover"
+  &__task-remove-container { // filho de .App
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+// Formulário de tarefas
+.TaskForm {
+  background: #fff; 
+  padding: 20px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  margin-top: 70px;
+  overflow: hidden;
+
+  &__label { // filho de .TaskForm
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
+  &__input { // filho de .TaskForm
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 22px); // Ajusta para o padding e borda
+    margin-right: 10px;
+    margin-bottom: 10px; 
+  }
+
+  &__button { // filho de .TaskForm
+    background-color: #d87ead;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: #9f2b79;
+    }
+  }
+}

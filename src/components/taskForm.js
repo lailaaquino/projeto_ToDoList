@@ -1,5 +1,4 @@
-// src/components/taskForm.js
-
+// src/components/TaskForm.js
 import React, { useState } from 'react';
 
 const TaskForm = ({ onAddTask }) => {
@@ -18,14 +17,19 @@ const TaskForm = ({ onAddTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="TaskForm">
+      <label htmlFor="taskInput" className="TaskForm__label">
+        Digite uma nova tarefa:
+      </label>
       <input
+        id="taskInput"
         type="text"
         value={taskInput}
         onChange={handleChange}
         placeholder="Digite uma nova tarefa"
+        className="TaskForm__input"
       />
-      <button type="submit">Adicionar</button>
+      <button type="submit" className="TaskForm__button">Adicionar</button>
     </form>
   );
 };
